@@ -1,13 +1,13 @@
 <script>
 	const first = 'Ian';
 	const last = 'Gonzalez-Silva';
-	const descriptor = 'Software, security, and the family auto shop — built out of Charlotte.';
+	const descriptor = "CS student at UNC Charlotte. I build software and help run my family's auto shop in Belmont.";
 
 	// Synex-style numbered intro row: who you are, in three lines.
 	const creds = [
-		{ no: '1', title: 'Software & security', body: 'CS at UNC Charlotte. I build tools, study systems, and ship real things.' },
-		{ no: '2', title: 'Auto shop operations', body: 'I run estimates, insurance, and the books at J&J Automotive.' },
-		{ no: '3', title: 'Charlotte, NC · ’27', body: 'Open to software engineering and security roles.' }
+		{ no: 'FOCUS', title: 'Software & security', body: 'CS at UNC Charlotte. I build tools, study systems, and ship real things.' },
+		{ no: 'BUSINESS', title: 'Auto shop operations', body: 'I run estimates, insurance, and the books at J&J Automotive.' },
+		{ no: 'BASED', title: 'Charlotte, NC · ’27', body: 'Open to software engineering and security roles.' }
 	];
 
 	const featured = [
@@ -27,8 +27,10 @@
 
 	const direct = [
 		{ no: '03', label: 'Call the shop', sub: '(980) 990-3935', href: 'tel:+19809903935' },
-		{ no: '04', label: 'Email', sub: 'info@jjautomotiverepairnc.com', href: 'mailto:info@jjautomotiverepairnc.com' },
-		{ no: '05', label: 'Find us on Google', sub: 'Reviews · directions', href: 'https://maps.google.com/?q=J%26J+Automotive+Repair+Belmont+NC' }
+		{ no: '04', label: 'Email the shop', sub: 'info@jjautomotiverepairnc.com', href: 'mailto:info@jjautomotiverepairnc.com' },
+		{ no: '05', label: 'Text me', sub: '(980) 206-4395', href: 'sms:+19802064395' },
+		{ no: '06', label: 'Email me', sub: 'ian.gonzalezsilva@pm.me', href: 'mailto:ian.gonzalezsilva@pm.me' },
+		{ no: '07', label: 'Find us on Google', sub: 'Reviews · directions', href: 'https://maps.google.com/?q=J%26J+Automotive+Repair+Belmont+NC' }
 	];
 
 	const ext = (h) => h.startsWith('http');
@@ -53,7 +55,7 @@
 	<section class="creds">
 		{#each creds as c, i}
 			<div class="cred" style="--delay: {140 + i * 70}ms">
-				<span class="cno">[ {c.no} ]</span>
+				<span class="cno">{c.no}</span>
 				<span class="ctitle">{c.title}</span>
 				<span class="cbody">{c.body}</span>
 			</div>
@@ -85,7 +87,6 @@
 
 	<footer>
 		<span>© {new Date().getFullYear()} {first} {last}</span>
-		<span>BUILT BY HAND</span>
 	</footer>
 </main>
 
@@ -141,7 +142,7 @@
 	}
 	@media (max-width: 480px) { .creds { grid-template-columns: 1fr; gap: 16px; } }
 	.cred { display: flex; flex-direction: column; gap: 7px; animation: rise 0.6s ease var(--delay) both; }
-	.cno { font-size: 10px; letter-spacing: 0.1em; color: var(--soft); }
+	.cno { font-size: 9px; letter-spacing: 0.2em; color: var(--soft); text-transform: uppercase; padding-bottom: 2px; border-bottom: 1px solid var(--line); align-self: flex-start; }
 	.ctitle { font-size: 13.5px; font-weight: 600; letter-spacing: -0.01em; }
 	.cbody { font-size: 10px; line-height: 1.55; color: var(--soft); }
 

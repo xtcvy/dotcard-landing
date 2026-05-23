@@ -2,8 +2,8 @@
 	// ── Edit your info here ───────────────────────────────────────────
 	const first = 'Ian';
 	const last = 'Gonzalez-Silva';
-	const roleLine = 'SOFTWARE · SECURITY · AUTOMOTIVE';
-	const metaLine = 'CHARLOTTE, NC — UNC CHARLOTTE ’27';
+	const roleLine = "UNC CHARLOTTE · CS · CLASS OF '27";
+	const metaLine = 'J&J AUTOMOTIVE · BELMONT, NC';
 
 	// Two featured "worlds" — your primary fork.
 	const featured = [
@@ -26,8 +26,10 @@
 	// Slim utility list.
 	const direct = [
 		{ idx: '03', label: 'Call the shop', sub: '(980) 990-3935', href: 'tel:+19809903935' },
-		{ idx: '04', label: 'Email', sub: 'info@jjautomotiverepairnc.com', href: 'mailto:info@jjautomotiverepairnc.com' },
-		{ idx: '05', label: 'Find us on Google', sub: 'Reviews · directions', href: 'https://maps.google.com/?q=J%26J+Automotive+Repair+Belmont+NC' }
+		{ idx: '04', label: 'Email the shop', sub: 'info@jjautomotiverepairnc.com', href: 'mailto:info@jjautomotiverepairnc.com' },
+		{ idx: '05', label: 'Text me', sub: '(980) 206-4395', href: 'sms:+19802064395' },
+		{ idx: '06', label: 'Email me', sub: 'ian.gonzalezsilva@pm.me', href: 'mailto:ian.gonzalezsilva@pm.me' },
+		{ idx: '07', label: 'Find us on Google', sub: 'Reviews · directions', href: 'https://maps.google.com/?q=J%26J+Automotive+Repair+Belmont+NC' }
 	];
 
 	const ext = (h) => h.startsWith('http');
@@ -73,7 +75,7 @@
 	</section>
 
 	<section>
-		<p class="rule"><span>DIRECT</span></p>
+		<p class="rule"><span>CONTACT</span></p>
 		<div class="list">
 			{#each direct as d, i}
 				<a class="row" href={d.href} target={ext(d.href) ? '_blank' : undefined}
@@ -88,18 +90,17 @@
 
 	<footer>
 		<span>© {new Date().getFullYear()} {first} {last}</span>
-		<span>BUILT BY HAND</span>
 	</footer>
 </main>
 
 <style>
 	:global(:root) {
-		--bg: #0b0b0d;
-		--panel: #111114;
-		--ink: #f4f1ea;
-		--muted: #86837c;
-		--line: #232327;
-		--accent: #d6a35c;
+		--bg: #101116;
+		--panel: #181a20;
+		--ink: #f4f2ec;
+		--muted: #8b8d96;
+		--line: #2a2c34;
+		--accent: #eae4d6;
 	}
 	:global(*) { box-sizing: border-box; }
 	:global(html), :global(body) {
@@ -208,9 +209,9 @@
 
 	@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
 	@keyframes pulse {
-		0% { box-shadow: 0 0 0 0 rgba(214, 163, 92, 0.5); }
-		70% { box-shadow: 0 0 0 7px rgba(214, 163, 92, 0); }
-		100% { box-shadow: 0 0 0 0 rgba(214, 163, 92, 0); }
+		0% { box-shadow: 0 0 0 0 rgba(234, 228, 214, 0.5); }
+		70% { box-shadow: 0 0 0 7px rgba(234, 228, 214, 0); }
+		100% { box-shadow: 0 0 0 0 rgba(234, 228, 214, 0); }
 	}
 	@media (prefers-reduced-motion: reduce) { * { animation: none !important; } }
 </style>
