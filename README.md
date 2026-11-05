@@ -54,27 +54,38 @@ npm run preview
 
 The site is written to `build/` (`index.html`, `light.html`, CSS, icons and images).
 
-`SITE_URL` is the public origin of the deployed site, with no trailing slash. Link previews
-(iMessage, Slack, LinkedIn, X and others) need absolute URLs for the preview image, so the
-build uses it for `og:image`, `og:url`, `canonical` and the JSON-LD `url`. If it isn't set,
-the build still succeeds, but it prints a warning and leaves those tags out, and shared links
-show only the title and description, with no image.
+`SITE_URL` is the public origin of the deployed site, such as `https://example.com`. Link
+previews (iMessage, Slack, LinkedIn, X and others) need absolute URLs for the preview image,
+so the build uses it for `og:image`, `og:url`, `canonical` and the JSON-LD `url`. You can set
+it in the environment, as above, or in a `.env` / `.env.production` file, which git ignores.
+
+- If it isn't set, the build still succeeds, but it prints a warning and leaves those tags
+  out, and shared links show only the title and description, with no image.
+- If it isn't a valid `http(s)://` origin (for example `example.com` with no scheme, or a URL
+  with a path), the build fails with a message saying so.
 
 ## Deploy
 
-`build/` is a plain static site, so any static host works. Use these settings:
+`build/` is a plain static site, so any static host works.
+
+**Vercel:** import the repo and keep the detected SvelteKit preset, with no output-directory
+override. On Vercel, `adapter-static` switches to zero-config mode: it writes Vercel's own
+output format, including the routing that serves `/light`. `SITE_URL` is optional, because
+the build falls back to the project's production domain (`VERCEL_PROJECT_PRODUCTION_URL`).
+
+**Netlify, Cloudflare Pages and other static hosts:**
 
 - **Build command:** `npm run build`
 - **Output / publish directory:** `build`
 - **Node version:** 22 or newer
-- **Environment variable:** `SITE_URL=https://<your production domain>`
+- **Environment variable:** `SITE_URL=https://<your production domain>` (optional on Netlify,
+  which falls back to the site's `URL`)
 
-On **Vercel** and **Netlify** you can skip `SITE_URL`, because the build falls back to the
-project's production URL (`VERCEL_PROJECT_PRODUCTION_URL` or Netlify's `URL`). Set it anyway
-if you serve the site from a different domain.
+Set `SITE_URL` anyway on any host if you serve the site from a different domain than the one
+the host reports.
 
-`/light` is served from `light.html`. Vercel, Netlify and Cloudflare Pages map that
-automatically; on other hosts make sure extensionless URLs resolve to `.html` files.
+`/light` is served from `light.html`. Netlify and Cloudflare Pages map that automatically. On
+other hosts, make sure extensionless URLs resolve to `.html` files.
 
 After deploying, paste the URL into a link-preview checker, such as LinkedIn's Post Inspector
 or Facebook's Sharing Debugger, to confirm the card and image show up. Those tools also force

@@ -47,7 +47,7 @@
 
 		<section aria-labelledby="links">
 			<h2 class="sr-only" id="links">Links</h2>
-			<ul class="featured">
+			<ul class="featured" role="list">
 				{#each featured as f, i}
 					<li>
 						<a
@@ -73,7 +73,7 @@
 
 		<section aria-labelledby="contact">
 			<h2 class="sr-only" id="contact">Contact</h2>
-			<ul class="list">
+			<ul class="list" role="list">
 				{#each contacts as d, i}
 					{@const ext = isExternal(d.href)}
 					<li>
@@ -185,7 +185,8 @@
 		border: 1px solid var(--line); border-radius: 10px;
 		text-decoration: none; color: var(--ink); background: #fff;
 		transition: transform 0.22s ease, box-shadow 0.22s ease;
-		animation: rise 0.6s ease var(--delay) both;
+		/* backwards, not both: a held end state would pin transform and block the hover lift */
+		animation: rise 0.6s ease var(--delay) backwards;
 	}
 	.fcard.sand { background: var(--sand); border-color: var(--sand-line); }
 	.fcard.cool { background: var(--cool); border-color: var(--cool-line); }

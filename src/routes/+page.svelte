@@ -37,7 +37,7 @@
 
 		<section aria-labelledby="worlds">
 			<h2 class="rule" id="worlds">Two worlds</h2>
-			<ul class="featured">
+			<ul class="featured" role="list">
 				{#each featured as f, i}
 					<li>
 						<a
@@ -63,7 +63,7 @@
 
 		<section aria-labelledby="contact">
 			<h2 class="rule" id="contact">Contact</h2>
-			<ul class="list">
+			<ul class="list" role="list">
 				{#each contacts as d, i}
 					{@const ext = isExternal(d.href)}
 					<li>
@@ -195,7 +195,8 @@
 		border: 1px solid var(--line); border-top: 2px solid var(--accent);
 		background: var(--panel); text-decoration: none; color: var(--ink);
 		transition: transform 0.22s ease, background 0.22s ease;
-		animation: rise 0.6s ease var(--delay) both;
+		/* backwards, not both: a held end state would pin transform and block the hover lift */
+		animation: rise 0.6s ease var(--delay) backwards;
 	}
 	.frow { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
 	.idx { font-size: 11px; letter-spacing: 0.12em; color: var(--accent); }
